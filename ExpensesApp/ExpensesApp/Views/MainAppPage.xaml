@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ExpensesApp.Views"
+             x:Class="ExpensesApp.Views.MainAppPage"
+             Title="Expenses">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Sign Out"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="OnSignOutClicked"/>
+    </ContentPage.ToolbarItems>
+    
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="20">
+		<!-- Expenses Limit Section -->
+		<Frame Grid.Row="0" Padding="15" CornerRadius="10">
+			<VerticalStackLayout Spacing="10">
+				<Label Text="Monthly Budget Limit" FontSize="18" FontAttributes="Bold"/>
+				<StackLayout Orientation="Horizontal" Spacing="10">
+					<Label Text="£" VerticalOptions="Center"/>
+					<Entry x:Name="LimitEntry"
+                           Text="1000"
+                           Keyboard="Numeric"
+                           WidthRequest="150"/>
+					<Button Text="Update"
+                            Clicked="OnUpdateLimitClicked"
+                            WidthRequest="100"/>
+				</StackLayout>
+			</VerticalStackLayout>
+		</Frame>
+
+		<!-- Expenses List Header -->
+		<Label Grid.Row="1" Text="Your Expenses" FontSize="18" FontAttributes="Bold" Margin="0,20,0,10"/>
+
+		<!-- Expenses List -->
+        <CollectionView Grid.Row="2" x:Name="ExpensesCollectionView" ItemsSource="{Binding Expenses}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" CornerRadius="5" Margin="0,0,0,10">
+                        <Grid ColumnDefinitions="*,Auto,Auto">
+                            <Label Text="{Binding Name}" FontSize="16"/>
+                            <Label Grid.Column="1" Text="{Binding Cost, StringFormat='£{0:F2}'}"
+                           FontSize="16" FontAttributes="Bold"/>
+                            <Label Grid.Column="2" Text="{Binding Category}"
+                           FontSize="14" TextColor="Gray"
+                                   Margin="10,0,0,0"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainAppPage}}, Path=EditExpenseCommand}"
+                            CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!-- Add Expense Button -->
+		<Button Grid.Row="3"
+                Text="+"
+                FontSize="24"
+                WidthRequest="60"
+                HeightRequest="60"
+                CornerRadius="30"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,0,20"
+                Clicked="OnAddExpenseClicked"/>
+	</Grid>
+</ContentPage>

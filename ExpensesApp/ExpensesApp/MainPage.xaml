@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExpensesApp.MainPage"
+             Title="ExpensesApp">
+
+    <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
+        <Label Text="Welcome to ExpensesApp" 
+               FontSize="32"
+               HorizontalOptions="Center" />
+
+        <Button Text="Login" 
+                Clicked="OnLoginClicked"
+                HorizontalOptions="Center" 
+                WidthRequest="200" />
+
+        <Button Text="Register" 
+                Clicked="OnRegisterClicked"
+                HorizontalOptions="Center" 
+                WidthRequest="200" />
+    </VerticalStackLayout>
+</ContentPage>

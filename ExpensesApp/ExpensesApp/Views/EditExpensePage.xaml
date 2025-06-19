@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExpensesApp.Views.EditExpensePage"
+             Title="Edit Expense">
+
+    <Grid>
+        <ScrollView Padding="20">
+            <VerticalStackLayout Spacing="20">
+                <Label Text="Edit Expense" FontSize="20" FontAttributes="Bold"/>
+
+                <Entry x:Name="NameEntry" Placeholder="Expense Name" Text="{Binding Name}"/>
+
+                <Entry x:Name="CostEntry" 
+                       Placeholder="Amount" 
+                       Keyboard="Numeric"
+                       Text="{Binding Cost}"/>
+
+                <Picker x:Name="CategoryPicker" Title="Select Category" SelectedItem="{Binding Category}">
+                    <Picker.Items>
+                        <x:String>Food</x:String>
+                        <x:String>Transportation</x:String>
+                        <x:String>Utilities</x:String>
+                        <x:String>Entertainment</x:String>
+                        <x:String>Other</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Button Text="Update Expense" 
+                        Command="{Binding UpdateExpenseCommand}"
+                        HorizontalOptions="Fill"/>
+
+                <Button Text="Delete Expense"
+                        Command="{Binding DeleteExpenseCommand}"
+                        HorizontalOptions="Fill"
+                        BackgroundColor="Red"
+                        TextColor="White"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button Text="Back"
+                Clicked="OnBackClicked"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="10"/>
+    </Grid>
+</ContentPage>

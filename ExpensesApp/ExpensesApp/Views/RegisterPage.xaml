@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExpensesApp.Views.RegisterPage"
+             Title="Register">
+
+    <Grid>
+        <VerticalStackLayout Spacing="15" Padding="30,0">
+            <Label Text="Create Account" FontSize="24" HorizontalOptions="Center" />
+
+            <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" />
+            <Entry x:Name="UsernameEntry" Placeholder="Username" />
+            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+            <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True" />
+
+            <Button Text="Register" Clicked="OnRegisterButtonClicked" Margin="0,20" />
+
+            <Label Text="Already have an account?" HorizontalOptions="Center" />
+            <Button Text="Login"
+                    Clicked="OnLoginClicked"
+                    HorizontalOptions="Center"
+                    WidthRequest="200" />
+        </VerticalStackLayout>
+
+        <Button Text="Back"
+                Clicked="OnBackClicked"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="10"/>
+    </Grid>
+</ContentPage>
